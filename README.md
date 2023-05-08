@@ -19,9 +19,9 @@ flowchart TD
     %% Services
     tsvc["Title Service\n[Software System]\n\nProvides an API to retrieve\ntitle information"]
 
+    p0 -- "View titles, searches titles\nand reviews using\n[HTTPS]" --> web0
     subgraph boundary["Listing Service"]
         %% Your boundary here
-        p0 -- "View titles, searches titles\nand reviews using\n[HTTPS]" --> web0
         web0 -- "Reads and writes to\n[Redis Serialization Protocol]" --> cache0
     end
 
