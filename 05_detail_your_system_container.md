@@ -142,14 +142,14 @@ flowchart TD
     TS["Title Service
         [Software System]
 
-        Provides and API to retrieve
+        Provides an API to retrieve
         title information
     "]
 
     RS["Review Service
         [Software System]
 
-        Provides and API to retrieve
+        Provides an API to retrieve
         and submit reviews
     "]
 
@@ -190,4 +190,33 @@ flowchart TD
     class TS,RS,SS,K supportingSystem
     style listing-service fill:none,stroke:#ccc,stroke-width:2px
     style listing-service color:#fff,stroke-dasharray: 5 5
+```
+
+
+```mermaid
+C4Context
+    title Listing Service C4 Model: Container Diagram
+
+    Person(p0, "Premium Member", "A user of the website who has purchased a subscription")
+
+    Container_Boundary(b0, "Listing Service") {
+        ContainerDb(cache0, "In-Memory Cache", "Redis", "Titles and their reviews<br/> are cached")
+        Container(web0, "Web Application", ".NET CORE MVC Application", "Allow members to view and review titles<br/>from their mobile devices")
+        Container(app0, "Mobile Application", "Xamarin Application", "Allow members to view and review titles<br/>from their mobile devices")
+    }
+
+    Container_Ext(tsvc, "Title Service", "Software System", "Provides an API to retrieve<br/>title information")
+    Container_Ext(rsvc, "Review Service", "Software System", "Provides an API to retrieve<br/>and submit reviews")
+    Container_Ext(ssvc, "Search Service", "Software System", "Provides an API to search<br/>for titles")
+    ContainerQueue(q0, "Message Broker", "Kafka", "Important domain events<br/>are published to Kafka")
+
+    Rel(p0, web0, "Views titles, searches titles<br/>and reviews titles using", "HTTPS")
+    Rel(p0, app0, "View titles, searches titles<br/>and reviews titles using", "HTTPS")
+    Rel(app0, web0, "Makes API calls to", "HTTPS")
+    Rel(web0, cache0, "Reads and writes to", "Redis Serialization Protocol")
+    Rel(web0, q0, "Publishes messages to", "Binary over TCP")
+    Rel(web0, tsvc, "Makes API calls to", "HTTPS")
+    Rel(web0, rsvc, "Makes API calls to", "HTTPS")
+    Rel(web0, ssvc, "Makes API calls to", "HTTPS")
+    UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
 ```

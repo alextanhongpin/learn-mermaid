@@ -76,7 +76,7 @@ flowchart TD
 
 ```mermaid
 C4Context
-    title Listing Service C4 Model: Container Diagram
+    title Listing Service C4 Model: System Context Diagram
     Person(PM, "Premium Member", "A user of the website who has<br/> purchased a subscription")
 
     Boundary(b0, "Listing Service") {
