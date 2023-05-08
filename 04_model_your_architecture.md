@@ -71,3 +71,25 @@ flowchart TD
     class TS,RS,SS supportingSystem
     class User person
 ```
+
+## Using Mermaid C4Context
+
+```mermaid
+C4Context
+    title Listing Service C4 Model: System Context
+
+    Boundary(b0, "Listing Service") {
+        Person(PM, "Premium Member", "A user of the website who has purchased a subscription")
+        System(LS, "Listing Service", "Serves web pages displaying title listings to the end user")
+        System_Ext(TS, "Title Service", "Provides an API to retrieve title information")
+        System_Ext(RS, "Review Service", "Provides an API to retrieve and submit reviews")
+        System_Ext(SS, "Search Service", "Provides an API to search for titles")
+    }
+
+    Rel(PM, LS, "Views titles, searches titles and reviews title using")
+    Rel(LS, TS, "Retrieves title information from")
+    Rel(LS, RS, "Retrieves from and submits reviews to")
+    Rel(LS, SS, "Searches for titles using")
+
+    UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
+```
