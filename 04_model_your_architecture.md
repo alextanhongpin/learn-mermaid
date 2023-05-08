@@ -76,20 +76,25 @@ flowchart TD
 
 ```mermaid
 C4Context
-    title Listing Service C4 Model: System Context
+    title Listing Service C4 Model: Container Diagram
+    Person(PM, "Premium Member", "A user of the website who has<br/> purchased a subscription")
 
     Boundary(b0, "Listing Service") {
-        Person(PM, "Premium Member", "A user of the website who has purchased a subscription")
-        System(LS, "Listing Service", "Serves web pages displaying title listings to the end user")
-        System_Ext(TS, "Title Service", "Provides an API to retrieve title information")
-        System_Ext(RS, "Review Service", "Provides an API to retrieve and submit reviews")
-        System_Ext(SS, "Search Service", "Provides an API to search for titles")
+        System(LS, "Listing Service", "Serves web pages displaying<br/> title listings to the end user")
+        System_Ext(TS, "Title Service", "Provides an API to <br/>retrieve title information")
+        System_Ext(RS, "Review Service", "Provides an API to <br/>retrieve and submit reviews")
+        System_Ext(SS, "Search Service", "Provides an API to <br/>search for titles")
     }
 
-    Rel(PM, LS, "Views titles, searches titles and reviews title using")
-    Rel(LS, TS, "Retrieves title information from")
-    Rel(LS, RS, "Retrieves from and submits reviews to")
-    Rel(LS, SS, "Searches for titles using")
+    Rel(PM, LS, "Views titles, searches <br/>titles and reviews title using")
+    Rel(LS, TS, "Retrieves title<br/>information from")
+    Rel(LS, RS, "Retrieves from<br/>and submits reviews to")
+    Rel(LS, SS, "Searches for titles<br/> using")
 
-    UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
+    UpdateRelStyle(PM, LS, $offsetX="-100", $offsetY="-30")
+    UpdateRelStyle(LS, TS, $offsetX="-40", $offsetY="-20")
+    UpdateRelStyle(LS, RS, $offsetX="-100", $offsetY="0")
+    UpdateRelStyle(LS, SS, $offsetX="20", $offsetY="0")
+
+    UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="1")
 ```
