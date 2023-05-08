@@ -27,9 +27,18 @@ flowchart TD
 
 
     web0 -- "Makes API calls to\n[HTTPS]" ---> tsvc
+    
+    
+    click web0 "https://github.com/alextanhongpin/learn-mermaid/blob/main/README.md#come-here" "Opens new page" _blank
+    click p0 "https://github.com/alextanhongpin/learn-mermaid/blob/main/README.md#come-here" "Opens in current page"
 
     class p0 person
     class web0,cache0 container
     class tsvc container_ext
     style boundary fill:none,stroke:#ccc,stroke-width:2px,stroke-dasharray: 5 5
 ```
+
+
+## Come here
+
+You managed to come here
