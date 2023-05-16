@@ -29,3 +29,14 @@ Nope, just write them separately as text, e.g. in the diagram above, we have the
 - A1. Page not found? End usecase
 - A2. Email or password not provided or invalid? Show error message.
 - A3. Service is down? Show error message
+
+
+## Sometimes representing it as table is more convenient
+
+| Flow | Alternative |
+| -- | -- | 
+| 1. User navigates to Login Page | A1. Page not found |
+| 2. User submits email and password | A2. Email or password not provided or invalid? Show error message. |
+| 3. Client sends the request to the system | A3. Service is down? Show error message |
+| 4. System logins the user and returns access token | A4. User not found? Return error | 
+| 5. System redirects the user to the home page | |
